@@ -6,11 +6,11 @@ description:        "Bytes and Words..."
 google_analytics:   UA-54128414-2 # Put your Google Analytics code
 
 # Author Info
-author_name:        "Mihai Seba" # Your name here
+author_name:        "Sebastian Mihai Ardelean" # Your name here
 author_email:       ardeleanasm@gmail.com # Your email here
 author_gravatar:    0afb9a47eb6654437c6986283cff151c # Your Gravatar md5 hash here for logo
 twitter_username:   mihaiseba # Your Twitter username here
-github_username:    ardeleanasm # Your GitHub username here
+github_username:    sebastianardelean # Your GitHub username here
 stackoverflow_username: users/1462225/23ars
 
 # Includes an icon in the footer for each username you enter
@@ -18,13 +18,13 @@ social:
   - title: twitter
     url: https://twitter.com/mihaiseba
   - title: github
-    url: https://github.com/ardeleanasm
+    url: https://github.com/sebastianardelean
   - title: linkedin
     url: https://linkedin.com/in/ardelean-sebastian-mihai
 
 disqus: 23ars
 # Site Settings
-url: http://ardeleanasm.github.io
+url: http://sebastianardelean.github.io
 paginate: 3
 paginate_path: "blog/page:num/"
 pages: ./_static_pages
