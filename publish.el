@@ -292,7 +292,7 @@
        '("website:main"
              :base-directory "./content"
              :base-extension "org"
-             :publishing-directory "./public"
+             :publishing-directory "./docs"
              :publishing-function org-html-publish-to-html
              :with-title nil
              :time-stamp-file nil ;; no time stamp
@@ -300,7 +300,7 @@
        '("website:assets"
              :base-directory "./assets"
              :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|woff2\\|ttf\\|woff"
-             :publishing-directory "./public"
+             :publishing-directory "./docs"
              :recursive t
              :publishing-function org-publish-attachment)))
 
