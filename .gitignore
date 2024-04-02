@@ -1,5 +1,3 @@
-_site
-_site/*.*
-.git-metadata/*.*
-.jekyll-cache/Jekyll
-Gemfile.lock
+.org-cache/*
+.packages/*
+public/*

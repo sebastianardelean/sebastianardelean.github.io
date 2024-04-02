@@ -1,0 +1,80 @@
+;;Done after tutorial presented https://github.com/SystemCrafters/org-website-example/tree/main
+
+;; Run server simple-httpd by M-x httpd-server-directory
+
+;; Set the package installation directory so that packages aren't stored in the
+;; ~/.emacs.d/
+
+(require 'package)
+(setq package-user-dir (expand-file-name "./.packages"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
+(add-to-list 'package-archives '("elpa" . "https://elpa.gnu.org/packages/"))
+
+
+
+;; Initialize the package system
+(package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
+
+
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+(require 'use-package)
+
+
+;; Require built-in dependencies
+(require 'vc-git)
+(require 'ox-publish)
+(require 'subr-x)
+(require 'cl-lib)
+
+
+;; Install dependencies
+(use-package esxml
+  :pin "melpa-stable"
+  :ensure t)
+
+(use-package htmlize
+  :ensure t)
+
+(use-package webfeeder
+  :ensure t)
+
+
+
+;; Config Values
+
+(setq user-full-name "Sebastian Mihai Ardelean")
+(setq user-mail-address "ardeleanasm@gmail.com")
+
+
+;; Customize HTML output
+(setq org-html-validation-link nil            ;; Don't show validation link
+      org-html-head-include-scripts nil       ;; Use own scripts
+      org-html-head-include-default-style nil ;; Use own styles
+      org-html-head "<link rel=\"stylesheet\" href=\"https://cdn.simplecss.org/simple.min.css\" />")
+
+
+;; Define the publishing project
+(setq org-publish-project-alist
+      (list
+       (list "my-org-site"
+             :recursive t
+             :base-directory "./content"
+             :publishing-directory "./public"
+             :publishing-function 'org-html-publish-to-html
+             :with-author nil ;; don't include author name
+             :with-creator t  ;; Include Emacs & Org versions in footer
+             :with-toc nil    ;; don't include TOC
+             :section-numbers nil ;; don't include section numbers
+             :time-stamp-file nil ;; no time stamp
+             )))
+
+
+      
+;; Generate the site output
+(org-publish-all t)
+
+(message "Build complete!")
