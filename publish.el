@@ -65,6 +65,7 @@
                     (div (@ (class "collapse navbar-collapse") (id "bs-example-navbar-collapse-1"))
                          (ul (@ (class "nav navbar-nav navbar-right"))
                              (li (a (@ (class "page-scroll") (href "#about")) "About"))
+                             (li (a (@ (class "page-scroll") (href "#publications")) "Publications"))
                              (li (a (@ (class "page-scroll") (href "#projects")) "Projects"))
                              (li (a (@ (class "page-scroll") (href "#contact")) "Contact"))))))
           (section (@ (id "home"))
@@ -103,8 +104,8 @@
                             (p "M.Sc. Eng. Sebastian Mihai, is a Computer Engineer and software developer interested in Computer Architecture, Embedded Programming, Operating Systems and Functional Programming")
                             (br))))))
 
-(defun dw/site-projects ()
-  (list `(section (@ (id "projects"))
+(defun dw/site-publications ()
+  (list `(section (@ (id "publications"))
                   (div (@ (class "content-section-a"))
                        (div (@ (class "container"))
                             (div (@ (class "row"))
@@ -123,7 +124,13 @@
                                             )))
                                  (div (@ (class "col-lg-5 col-lg-offset-2 col-sm-6"))
                                       (img (@ (class "img-responsive") (src "img/blog.png") (alt "")))))))
-                  (div (@ (class "content-section-b"))
+                  )))
+                 
+                 
+
+(defun dw/site-projects ()
+  (list `(section (@ (id "projects"))
+                   (div (@ (class "content-section-b"))
                        (div (@ (class "container"))
                             (div (@ (class "row"))
                                  (div (@ (class "col-lg-5 col-lg-offset-1 col-sm-push-6 col-sm-6"))
@@ -135,7 +142,8 @@
                                             (li (a (@ (href "https://hackage.haskell.org/package/qchas") (target "_blank")) "QCHas"))
                                             (li (a (@ (href "https://github.com/ardeleanasm/input_capture_driver") (target "_blank")) "Linux Input Capture Driver")))))
                                       (div (@ (class "col-lg-5 col-sm-pull-6 col-sm-6"))
-                                           (img (@ (class "img-responsive") (src "img/blog.png") (alt ""))))))))))
+                                           (img (@ (class "img-responsive") (src "img/blog.png") (alt "")))))))
+                   )))
 
 (defun dw/site-contact ()
   (list `(section (@ (id "contact"))
@@ -170,6 +178,9 @@
                              (li (@ (class "footer-menu-divider")) "&sdot;")
                              (li
                               (a (@ (href "#about")) "About"))
+                             (li (@ (class "footer-menu-divider")) "&sdot;")
+                             (li
+                              (a (@ (href "#publications")) "Publications"))
                              (li (@ (class "footer-menu-divider")) "&sdot;")
                              (li
                               (a (@ (href "#projects")) "Projects"))
@@ -227,6 +238,7 @@
            (body
             ,@(dw/site-header)
             ,@(dw/site-about)
+            ,@(dw/site-publications)
             ,@(dw/site-projects)
             ,@(dw/site-contact)
             ,@(dw/site-footer)
