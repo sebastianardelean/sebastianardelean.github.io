@@ -120,7 +120,8 @@
 
 
                                             ;;Here add new articles!
-;;                                            (li "")
+                                            (li "Sebastian Mihai Ardelean, Mihai Udrescu, Valentin Stangaciu,
+Easy to integrate API for accessing true random numbers generated with IDQ’s Quantis Appliance, SoftwareX, Volume 27, 2024, 101841, ISSN 2352-7110, https://doi.org/10.1016/j.softx.2024.101841. (https://www.sciencedirect.com/science/article/pii/S2352711024002127)")
                                             (li "Ardelean SM, Udrescu M. 2024. Hybrid quantum search with genetic algorithm optimization. PeerJ Computer Science 10:e2210 https://doi.org/10.7717/peerj-cs.2210")
                                             (li "SUCIU, Liana, et al. Categorical Analysis of Database Consistency in Reporting Drug–Drug Interactions for Cardiovascular Diseases. Pharmaceutics, 2024, 16.3: 339.")
                                             (li "UDRESCU, Mihai; ARDELEAN, Sebastian Mihai; UDRESCU, Lucreţia. The curse and blessing of abundance—the evolution of drug interaction databases and their impact on drug network analysis. GigaScience, 2023, 12: giad011.")
