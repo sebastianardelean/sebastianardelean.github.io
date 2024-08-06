@@ -82,16 +82,21 @@
                                             (ul (@ (class "list-inline intro-social-buttons"))
                                                 (li
                                                  (a (@ (class "btn btn-default btn-lg") (href "https://twitter.com/mihaiseba"))
-                                                    (i (@ (class "fa fa-twitter fa-fw")) "")
+                                                    (i (@ (class "fa fa-brands fa-twitter fa-fw")) "")
                                                     (span (@ (class "network-name")) "Twitter")))
                                                 (li
                                                  (a (@ (class "btn btn-default btn-lg") (href "https://github.com/sebastianardelean"))
-                                                    (i (@ (class "fa fa-github fa-fw")) "")
+                                                    (i (@ (class "fa fa-brands fa-github fa-fw")) "")
                                                     (span (@ (class "network-name")) "Github")))
                                                 (li
                                                  (a (@ (class "btn btn-default btn-lg") (href "https://linkedin.com/in/ardelean-sebastian-mihai"))
-                                                    (i (@ (class "fa fa-linkedin fa-fw")) "")
-                                                    (span (@ (class "network-name")) "Linkedin"))))))))))
+                                                    (i (@ (class "fa fa-brands fa-linkedin fa-fw")) "")
+                                                    (span (@ (class "network-name")) "Linkedin")))
+                                                (li
+                                                 (a (@ (class "btn btn-default btn-lg") (href "https://www.researchgate.net/profile/Sebastian-Ardelean"))
+                                                    (i (@ (class "fa fa-brands fa-researchgate fa-fw")) "")
+                                                    (span (@ (class "network-name")) "ResearchGate")))
+                                                )))))))
                                                     
        )))
 
@@ -167,16 +172,21 @@ Easy to integrate API for accessing true random numbers generated with IDQ’s Q
                                       (ul (@ (class "list-inline banner-social-buttons"))
                                           (li
                                            (a (@ (class "btn btn-default btn-lg") (href "https://twitter.com/mihaiseba"))
-                                              (i (@ (class "fa fa-twitter fa-fw")) "")
+                                              (i (@ (class "fa fa-brands fa-twitter fa-fw")) "")
                                               (span (@ (class "network-name")) "Twitter")))
                                           (li
                                            (a (@ (class "btn btn-default btn-lg") (href "https://github.com/sebastianardelean"))
-                                              (i (@ (class "fa fa-github fa-fw")) "")
+                                              (i (@ (class "fa fa-brands fa-github fa-fw")) "")
                                               (span (@ (class "network-name")) "Github")))
                                           (li
                                            (a (@ (class "btn btn-default btn-lg") (href "https://linkedin.com/in/ardelean-sebastian-mihai"))
-                                              (i (@ (class "fa fa-linkedin fa-fw")) "")
-                                              (span (@ (class "network-name")) "Linkedin")))))))))))
+                                              (i (@ (class "fa fa-brands fa-linkedin fa-fw")) "")
+                                              (span (@ (class "network-name")) "Linkedin")))
+                                          (li
+                                           (a (@ (class "btn btn-default btn-lg") (href "https://www.researchgate.net/profile/Sebastian-Ardelean"))
+                                              (i (@ (class "fa fa-brands fa-researchgate fa-fw")) "")
+                                              (span (@ (class "network-name")) "ResearchGate")))
+                                          ))))))))
 
 (defun dw/site-footer ()
   (list `(footer
@@ -241,7 +251,10 @@ Easy to integrate API for accessing true random numbers generated with IDQ’s Q
             (link (@ (rel "icon") (type "image/png") (href "img/favicon.png")))
             (link (@ (href "css/bootstrap.min.css") (rel "stylesheet")))
             (link (@ (href "css/landing-page.css") (rel "stylesheet")))
-            (link (@ (href "font-awesome-4.1.0/css/font-awesome.min.css") (rel "stylesheet") (type "text/css")))
+            (link (@ (href "font-awesome-6.6.0/css/fontawesome.min.css") (rel "stylesheet") (type "text/css")))
+            (link (@ (href "font-awesome-6.6.0/css/all.css") (rel "stylesheet") (type "text/css")))
+            (link (@ (href "font-awesome-6.6.0/css/brands.css") (rel "stylesheet") (type "text/css")))
+            (link (@ (href "font-awesome-6.6.0/css/solid.css") (rel "stylesheet") (type "text/css")))
             (link (@ (href "http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic") (rel "stylesheet") (type "text/css")))
            
 ;;            (script (@ (src "js/jquery.easing.min.js")))
@@ -327,7 +340,7 @@ Easy to integrate API for accessing true random numbers generated with IDQ’s Q
              )
        '("website:assets"
              :base-directory "./assets"
-             :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|woff2\\|ttf\\|woff"
+             :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|woff2\\|ttf\\|woff\\|woff2"
              :publishing-directory "./docs"
              :recursive t
              :publishing-function org-publish-attachment)))
