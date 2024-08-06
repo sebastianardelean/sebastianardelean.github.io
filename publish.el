@@ -82,8 +82,8 @@
                                             (ul (@ (class "list-inline intro-social-buttons"))
                                                 (li
                                                  (a (@ (class "btn btn-default btn-lg") (href "https://twitter.com/mihaiseba"))
-                                                    (i (@ (class "fa fa-brands fa-twitter fa-fw")) "")
-                                                    (span (@ (class "network-name")) "Twitter")))
+                                                    (i (@ (class "fa fa-brands fa-x fa-fw")) "")
+                                                    (span (@ (class "network-name")) "")))
                                                 (li
                                                  (a (@ (class "btn btn-default btn-lg") (href "https://github.com/sebastianardelean"))
                                                     (i (@ (class "fa fa-brands fa-github fa-fw")) "")
@@ -171,9 +171,9 @@ Easy to integrate API for accessing true random numbers generated with IDQ’s Q
                                  (div (@ (class "col-lg-6"))
                                       (ul (@ (class "list-inline banner-social-buttons"))
                                           (li
-                                           (a (@ (class "btn btn-default btn-lg") (href "https://twitter.com/mihaiseba"))
-                                              (i (@ (class "fa fa-brands fa-twitter fa-fw")) "")
-                                              (span (@ (class "network-name")) "Twitter")))
+                                           (a (@ (class "btn btn-default btn-lg") (href "https://x.com/mihaiseba"))
+                                              (i (@ (class "fa fa-brands fa-x fa-fw")) "")
+                                              (span (@ (class "network-name")) "")))
                                           (li
                                            (a (@ (class "btn btn-default btn-lg") (href "https://github.com/sebastianardelean"))
                                               (i (@ (class "fa fa-brands fa-github fa-fw")) "")
@@ -186,7 +186,10 @@ Easy to integrate API for accessing true random numbers generated with IDQ’s Q
                                            (a (@ (class "btn btn-default btn-lg") (href "https://www.researchgate.net/profile/Sebastian-Ardelean"))
                                               (i (@ (class "fa fa-brands fa-researchgate fa-fw")) "")
                                               (span (@ (class "network-name")) "ResearchGate")))
-                                          ))))))))
+                                          )
+                                      )))))))
+                                      
+                                           
 
 (defun dw/site-footer ()
   (list `(footer
