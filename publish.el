@@ -121,19 +121,25 @@
                                       (div (@ (class "clearfix")) "")
                                       (h2 (@ (class "section-heading")) "Publications")
                                       (div (@ (class "lead"))
+                                           (h4 "Conferences")
                                            (ul
-
-
-                                            ;;Here add new articles!
+                                            (li "ARDELEAN, Sebastian Mihai; UDRESCU, Mihai. Circuit level implementation of the Reduced Quantum Genetic Algorithm using Qiskit. In: 2022 IEEE 16th International Symposium on Applied Computational Intelligence and Informatics (SACI). IEEE, 2022. p. 000155-000160.")
+                                     
+                                            (li "ARDELEAN, Sebastian Mihai; UDRESCU, Mihai. QC| pp>: A Behavioral Quantum Computing Simulation Library. In: 2018 IEEE 12th International Symposium on Applied Computational Intelligence and Informatics (SACI). IEEE, 2018. p. 000437-000442.")
+                                            )
+                                           (h4 "Journals")
+                                           (ul
                                             (li "Sebastian Mihai Ardelean, Mihai Udrescu, Valentin Stangaciu,
 Easy to integrate API for accessing true random numbers generated with IDQ’s Quantis Appliance, SoftwareX, Volume 27, 2024, 101841, ISSN 2352-7110, https://doi.org/10.1016/j.softx.2024.101841. (https://www.sciencedirect.com/science/article/pii/S2352711024002127)")
                                             (li "Ardelean SM, Udrescu M. 2024. Hybrid quantum search with genetic algorithm optimization. PeerJ Computer Science 10:e2210 https://doi.org/10.7717/peerj-cs.2210")
                                             (li "SUCIU, Liana, et al. Categorical Analysis of Database Consistency in Reporting Drug–Drug Interactions for Cardiovascular Diseases. Pharmaceutics, 2024, 16.3: 339.")
                                             (li "UDRESCU, Mihai; ARDELEAN, Sebastian Mihai; UDRESCU, Lucreţia. The curse and blessing of abundance—the evolution of drug interaction databases and their impact on drug network analysis. GigaScience, 2023, 12: giad011.")
-                                            (li "ARDELEAN, Sebastian Mihai; UDRESCU, Mihai. Circuit level implementation of the Reduced Quantum Genetic Algorithm using Qiskit. In: 2022 IEEE 16th International Symposium on Applied Computational Intelligence and Informatics (SACI). IEEE, 2022. p. 000155-000160.")
                                             (li "ARDELEAN, Sebastian Mihai; UDRESCU, Mihai. Graph coloring using the reduced quantum genetic algorithm. PeerJ Computer Science, 2022, 7: e836.")
-                                            (li "ARDELEAN, Sebastian Mihai; UDRESCU, Mihai. QC| pp>: A Behavioral Quantum Computing Simulation Library. In: 2018 IEEE 12th International Symposium on Applied Computational Intelligence and Informatics (SACI). IEEE, 2018. p. 000437-000442.")
-                                            )))
+
+                                            )
+
+
+                                           ))
                                  (div (@ (class "col-lg-5 col-lg-offset-2 col-sm-6"))
                                       (img (@ (class "img-responsive") (src "img/blog.png") (alt "")))))))
                   )))
