@@ -108,7 +108,7 @@
                             (br)
                             (h2 "About")
                             (br)
-                            (p "M.Sc. Eng. Sebastian Mihai, is a Computer Engineer and software developer interested in Computer Architecture, Embedded Programming, Operating Systems and Functional Programming")
+                            (p "PhD. Eng. Sebastian Mihai, is a Computer Engineer and software developer interested in Computer Architecture, Embedded Programming, Operating Systems and Functional Programming")
                             (br))))))
 
 (defun dw/site-publications ()
