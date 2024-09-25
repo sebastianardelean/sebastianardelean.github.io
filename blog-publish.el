@@ -70,7 +70,9 @@
              :with-toc t                ;; Include a table of contents
              :section-numbers t       ;; Don't include section numbers
              :time-stamp-file nil
-             :html-head-extra "<header><a href=\"./\">Home</a></header>"
+             :html-head-extra "<header><a href=\"./\">Home</a>
+<a href=\"./archive.html\">Archive</a>
+</header>"
              :auto-sitemap t
              :sitemap-filename "archive.org"
              :sitemap-title "Archive"
