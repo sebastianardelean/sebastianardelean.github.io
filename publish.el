@@ -345,7 +345,7 @@ Easy to integrate API for accessing true random numbers generated with IDQ’s Q
        '("website:main"
              :base-directory "./content"
              :base-extension "org"
-             :publishing-directory "./docs"
+             :publishing-directory "./public"
              :publishing-function org-html-publish-to-html
              :with-title nil
              :time-stamp-file nil ;; no time stamp
@@ -353,7 +353,7 @@ Easy to integrate API for accessing true random numbers generated with IDQ’s Q
        '("website:assets"
              :base-directory "./assets"
              :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|woff2\\|ttf\\|woff\\|woff2"
-             :publishing-directory "./docs"
+             :publishing-directory "./public"
              :recursive t
              :publishing-function org-publish-attachment)))
 
