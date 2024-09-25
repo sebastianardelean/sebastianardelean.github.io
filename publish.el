@@ -141,7 +141,7 @@ Easy to integrate API for accessing true random numbers generated with IDQ’s Q
 
                                            ))
                                  (div (@ (class "col-lg-5 col-lg-offset-2 col-sm-6"))
-                                      (img (@ (class "img-responsive") (src "img/blog.png") (alt "")))))))
+                                      (img (@ (class "img-responsive") (src "img/blog_icon.png") (alt "")))))))
                   )))
                  
                  
@@ -169,6 +169,8 @@ Easy to integrate API for accessing true random numbers generated with IDQ’s Q
                                       (div (@ (class "col-lg-5 col-sm-pull-6 col-sm-6"))
                                            (img (@ (class "img-responsive") (src "img/blog.png") (alt "")))))))
                    )))
+
+
 
 (defun dw/site-contact ()
   (list `(section (@ (id "contact"))
