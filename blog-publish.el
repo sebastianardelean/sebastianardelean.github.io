@@ -64,7 +64,7 @@
              :recursive t
              :base-directory "./blog"
              :publishing-function 'org-html-publish-to-html
-             :publishing-directory "./html/blog"
+             :publishing-directory "./docs/blog"
              :with-author nil           ;; Don't include author name
              :with-creator nil            ;; Include Emacs and Org versions in footer
              :with-toc t                ;; Include a table of contents
