@@ -1,3 +1,4 @@
+#+DATE: 2024-08-21
 #+title: Simple GA in Clojure
 
  
