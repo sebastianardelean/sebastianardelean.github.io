@@ -69,7 +69,9 @@
                              (li (a (@ (class "page-scroll") (href "#about")) "About"))
                              (li (a (@ (class "page-scroll") (href "#publications")) "Publications"))
                              (li (a (@ (class "page-scroll") (href "#projects")) "Projects"))
-                             (li (a (@ (class "page-scroll") (href "#contact")) "Contact"))))))
+                             (li (a (@ (class "page-scroll") (href "#contact")) "Contact"))
+                             (li (a (@ (class "page-scroll") (href "https://sebastianardelean.github.io/blog/") (target "_blank")) "Blog"))
+                             ))))
           (section (@ (id "home"))
                    (div (@ (class "intro-header"))
                         (div (@ (class "container"))
@@ -141,7 +143,7 @@ Easy to integrate API for accessing true random numbers generated with IDQ’s Q
 
                                            ))
                                  (div (@ (class "col-lg-5 col-lg-offset-2 col-sm-6"))
-                                      (img (@ (class "img-responsive") (src "img/blog_icon.png") (alt "")))))))
+                                      (img (@ (class "img-responsive") (src "img/blog.png") (alt "")))))))
                   )))
                  
                  
@@ -221,7 +223,10 @@ Easy to integrate API for accessing true random numbers generated with IDQ’s Q
                               (a (@ (href "#projects")) "Projects"))
                              (li (@ (class "footer-menu-divider")) "&sdot;")
                              (li
-                              (a (@ (href "#contact")) "Contact")))
+                              (a (@ (href "#contact")) "Contact"))
+                             (li (@ (class "footer-menu-divider")) "&sdot;")
+                             (li
+                              (a (@ (href "https://sebastianardelean.github.io/blog/") (target "_blank")) "Blog")))
                          (p (@ (class "copyright text-muted small")) "© 2024 · Sebastian Mihai Ardelean"))
                     (div (@ (class "col-md-4")) ""))))))
 

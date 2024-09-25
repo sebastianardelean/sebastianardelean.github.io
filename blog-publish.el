@@ -26,24 +26,14 @@
 
 
 
-
-;(defun my-org-sitemap-format-entry (entry style project)
-  "Format ENTRY for the sitemap."
-;  (cond ((not (directory-name-p entry))
-;         (if (not (string= (file-name-sans-extension entry) "index"))
-;             (format "[[file:%s.html][%s]] (%s)"
-;                     (file-name-sans-extension entry)
-;                     (org-publish-find-title entry project)
-;                     (format-time-string "%Y-%m-%d" (org-publish-find-date entry project)))
-;           (message "")))))
-           
+          
 
 (defun my-org-sitemap-format-entry (entry style project)
   "Format ENTRY for the sitemap."
   (let ((filename (file-name-sans-extension entry))
         (title (org-publish-find-title entry project))
         (date (org-publish-find-date entry project)))
-    (message "Debug: filename=%s, title=%s, date=%s" filename title date)
+   ; (message "Debug: filename=%s, title=%s, date=%s" filename title date)
     (cond ((and (not (directory-name-p entry))
                 (not (string= filename "index"))
                 (not (string= filename "sitemap"))

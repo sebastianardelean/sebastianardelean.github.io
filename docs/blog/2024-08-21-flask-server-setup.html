@@ -19,17 +19,17 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org3501ddb">1. Dependencies</a></li>
-<li><a href="#org6587597">2. Python environment</a></li>
-<li><a href="#org7e6b95f">3. Python Application</a></li>
-<li><a href="#orga2e0bd5">4. Systemd Service</a></li>
-<li><a href="#orgec66408">5. Nginx as reverse proxy</a></li>
+<li><a href="#org1121b10">1. Dependencies</a></li>
+<li><a href="#org40805da">2. Python environment</a></li>
+<li><a href="#org09ca832">3. Python Application</a></li>
+<li><a href="#org5448d78">4. Systemd Service</a></li>
+<li><a href="#orgc841326">5. Nginx as reverse proxy</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org3501ddb" class="outline-2">
-<h2 id="org3501ddb"><span class="section-number-2">1.</span> Dependencies</h2>
+<div id="outline-container-org1121b10" class="outline-2">
+<h2 id="org1121b10"><span class="section-number-2">1.</span> Dependencies</h2>
 <div class="outline-text-2" id="text-1">
 <div class="org-src-container">
 <pre class="src src-bash">sudo apt install python3-pip python3-dev python3-venv nginx
@@ -38,8 +38,8 @@
 </div>
 </div>
 
-<div id="outline-container-org6587597" class="outline-2">
-<h2 id="org6587597"><span class="section-number-2">2.</span> Python environment</h2>
+<div id="outline-container-org40805da" class="outline-2">
+<h2 id="org40805da"><span class="section-number-2">2.</span> Python environment</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
 <pre class="src src-bash">python3 -m venv env
@@ -50,8 +50,8 @@ pip3 install flask gunicorn
 </div>
 </div>
 
-<div id="outline-container-org7e6b95f" class="outline-2">
-<h2 id="org7e6b95f"><span class="section-number-2">3.</span> Python Application</h2>
+<div id="outline-container-org09ca832" class="outline-2">
+<h2 id="org09ca832"><span class="section-number-2">3.</span> Python Application</h2>
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
 <pre class="src src-python"><span style="font-weight: bold; font-style: italic;">#</span><span style="font-weight: bold; font-style: italic;">~/project/app.py</span>
@@ -77,8 +77,8 @@ And deactivate the environment.
 </div>
 </div>
 
-<div id="outline-container-orga2e0bd5" class="outline-2">
-<h2 id="orga2e0bd5"><span class="section-number-2">4.</span> Systemd Service</h2>
+<div id="outline-container-org5448d78" class="outline-2">
+<h2 id="org5448d78"><span class="section-number-2">4.</span> Systemd Service</h2>
 <div class="outline-text-2" id="text-4">
 <div class="org-src-container">
 <pre class="src src-bash">  <span style="font-weight: bold; font-style: italic;">#</span><span style="font-weight: bold; font-style: italic;">vi /etc/systemd/system/flask.service</span>
@@ -108,8 +108,8 @@ systemctl status flask
 </div>
 </div>
 
-<div id="outline-container-orgec66408" class="outline-2">
-<h2 id="orgec66408"><span class="section-number-2">5.</span> Nginx as reverse proxy</h2>
+<div id="outline-container-orgc841326" class="outline-2">
+<h2 id="orgc841326"><span class="section-number-2">5.</span> Nginx as reverse proxy</h2>
 <div class="outline-text-2" id="text-5">
 <pre class="example">
 &gt; vim /etc/nginx/sites-available/flask.conf
