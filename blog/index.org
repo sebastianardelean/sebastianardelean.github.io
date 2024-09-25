@@ -1,0 +1,20 @@
+#+title: Blog... or in fact, some short notes
+
+
+
++ [[./20240821194608-polynomial_values_in_haskell.org][Polynomial values in Haskell]]
++ [[./20240821200109-monte_carlo_algorithms.org][Monte Carlo Algorithms]]
++ [[./20240821200835-flask_server_setup.org][Flask Server Setup]]
++ [[./20240821200835-latexdiff.org][Latex Diff]]
++ [[./20240821202847-fractals_implemented_in_clojure.org][Fractals implemented in Clojure]]
++ [[./20240821202847-decimal_to_binary_in_clojure.org][Decimal to binary in Clojure]]
++ [[./20240821202847-simple_ga_in_clojure.org][Simple GA in Clojure]]
++ [[./20240821201742-metaprogramming_in_cpp.org][Metaprogramming in Cpp]]
++ [[./20240821201742-maps_of_member_functions_in_cpp.org][Maps of member functions in Cpp]]
++ [[./20240821201742-thread_safe_singleton_design_pattern_in_cpp.org][Thread-safe Singleton design pattern in Cpp]]
++ [[./20240821201742-decorator_design_pattern_in_cpp.org][Decorator design pattern in Cpp]]
+
+
+
+
+

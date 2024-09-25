@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Monte Carlo algorithms in OCaml</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Monte Carlo algorithms in OCaml</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org96f7277">Monte Carlo Integration</a></li>
+<li><a href="#orgd33fd34">Monte Carlo PI Estimation</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org96f7277" class="outline-2">
+<h2 id="org96f7277">Monte Carlo Integration</h2>
+<div class="outline-text-2" id="text-org96f7277">
+<div class="org-src-container">
+<pre class="src src-ocaml">module type MonteCarlo_type=sig
+  val initializePRNG:unit-&gt;unit
+  val getRandomNumber:unit-&gt;float
+  val approximate:(float-&gt;float)-&gt;float-&gt;float-&gt;int-&gt;int-&gt;float-&gt;float  
+end
+
+let rec approximate f a b n index value=
+    if index=(n-1) then
+      ((b-.a)/.(float_of_int index))*.value
+    else
+      let randVal=getRandomNumber() in
+      let inInterval=a+.randVal*.(b-.a) in
+      let fVal=f inInterval in
+      approximate f a b n (index+1) (value+.fVal)
+
+open Random
+open MonteCarlo_type
+
+module MonteCarlo:MonteCarlo_type=struct
+  let initializePRNG ()=Random.self_init()
+  let getRandomNumber ()=Random.float 1.0
+
+  let rec approximate f a b n index value=
+    if index=(n-1) then
+      ((b-.a)/.(float_of_int index))*.value
+    else
+      let randVal=getRandomNumber() in
+      let inInterval=a+.randVal*.(b-.a) in
+      let fVal=f inInterval in
+      approximate f a b n (index+1) (value+.fVal)
+end
+
+open MonteCarlo
+
+let pi = 4.0 *. atan 1.0;;
+let func (x:float)=sin x
+let () = 
+  MonteCarlo.initializePRNG();
+  print_float (MonteCarlo.approximate func 0.0 pi 100000 0 0.0)
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd33fd34" class="outline-2">
+<h2 id="orgd33fd34">Monte Carlo PI Estimation</h2>
+<div class="outline-text-2" id="text-orgd33fd34">
+<p>
+Formula to determine PI:
+</p>
+
+\begin{equation}
+PI=4.0*\frac{hits}{darts thrown}
+\end{equation}
+
+<div class="org-src-container">
+<pre class="src src-fsharp">let rnd=System.Random(System.DateTime.Now.Millisecond)
+
+let genRandomNumbers (count:int) =
+    List.init count (fun _ -&gt; rnd.NextDouble ())
+
+let isInside (x:double) (y:double)=(sqrt (x*x+y*y))&lt;1.0
+
+let sum (x:^a list)=
+    match (isInside (x.Head*2.0-1.0) (x.Tail.Head*2.0-1.0)) with
+        | false-&gt;0
+        | true-&gt; 1
+
+let rec computePi (numThrows:int) (hits:int) (idx:int)=
+    if numThrows=idx then
+        4.0*((double)hits/(double)numThrows)
+    else
+          computePi numThrows (hits+(genRandomNumbers 2 |&gt; sum)) (idx+1)
+
+[&lt;EntryPoint&gt;]
+let main argv = 
+    let l=computePi 1000000000 0 0
+    printfn "%F" l
+    0
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.3 (<a href="https://orgmode.org">Org</a> mode 9.6.15)</p>
+</div>
+</body>
+</html>

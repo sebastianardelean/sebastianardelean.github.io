@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fractals implemented in Clojure</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Fractals implemented in Clojure</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgaffa551">Fractal canopy</a></li>
+<li><a href="#orge087528">Vicsek fractal</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgaffa551" class="outline-2">
+<h2 id="orgaffa551">Fractal canopy</h2>
+<div class="outline-text-2" id="text-orgaffa551">
+<div class="org-src-container">
+<pre class="src src-clojure">(ns fractals.core
+  (:gen-class))
+
+(def tree-fractal-file "tree.svg")
+
+
+(defn append-to-file
+  "Uses spit to append to a file specified with its name as a string, or
+   anything else that writer can take as an argument.  s is the string to
+   append."     
+  [file-name s]
+  (spit file-name s :append true))
+
+
+
+(def header-xml "&lt;?xml version=\"1.0\"?&gt;")
+(def header-svg "&lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"&gt;")
+(def footer "\" stroke=\"black\" stroke-width=\"1\"/&gt;\n&lt;/svg&gt;")
+
+
+
+(defn map-y-coordinate [y]
+  (- 600 y))
+
+(defn draw-line [x y x1 y1 file]
+  (append-to-file file (str " M " x " " (map-y-coordinate y)))
+  (append-to-file file (str " L " x1 " " (map-y-coordinate y1)))
+  )
+
+(defn draw-tree [x y angle depth len fork-angle]
+  (if (&gt; depth 0)
+    (let [x2 (- x (* (Math/sin (Math/toRadians angle)) depth len))
+          y2 (- y (* (Math/cos (Math/toRadians angle)) depth len))]
+      (draw-line x y x2 y2 tree-fractal-file)
+      (draw-tree x2 y2 (- angle fork-angle) (- depth 1) len fork-angle)
+      (draw-tree x2 y2 (+ angle fork-angle) (- depth 1) len fork-angle)
+      )))
+
+
+(defn run-tree []
+  (let [content "&lt;path d=\""
+
+        ]
+    (append-to-file tree-fractal-file header-xml)
+    (append-to-file tree-fractal-file header-svg)
+    (append-to-file tree-fractal-file content)
+    (draw-tree 600 50 180 10 10 20)
+    (append-to-file tree-fractal-file footer)
+    ))
+
+(defn -main
+  [&amp; args]
+  ;;  (run 0.0 0.0 729.0 )
+  (run-tree)
+  )
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge087528" class="outline-2">
+<h2 id="orge087528">Vicsek fractal</h2>
+<div class="outline-text-2" id="text-orge087528">
+<div class="org-src-container">
+<pre class="src src-clojure">  (def header-xml "&lt;?xml version=\"1.0\"?&gt;")
+(def header-svg "&lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"&gt;")
+(def footer "\"/&gt;\n&lt;/svg&gt;")
+
+(defn append-to-file
+  [file-name s]
+  (spit file-name s :append true))
+
+
+
+(defn print-line [x y len file]
+  (append-to-file file (str "M " x " " y))
+  (append-to-file file (str "h " len))
+  (append-to-file file (str "v " len))
+  (append-to-file file (str "h " (- 0 len)))
+  (append-to-file file (str "v -" len))  
+  )
+
+(defn fractal-cross [x y len file]
+  (if (&lt; len 3)
+    (print-line x y len file)
+    (let [l3 (/ len 3.0) l23 (* l3 2)]
+      (fractal-cross x y l3 file)
+      (fractal-cross (+ x l23) y l3 file)
+      (fractal-cross (+ x l3) (+ y l3) l3 file)
+      (fractal-cross x (+ y l23) l3 file)
+      (fractal-cross (+ x l23) (+ y l23) l3 file))))
+
+(defn run [x,y,len file]
+  (let [content "&lt;path d=\""]
+    (append-to-file file header-xml)
+    (append-to-file file header-svg)
+    (append-to-file file content)
+    (fractal-cross x y len file)
+    (append-to-file file footer)))
+
+
+(run 0.0 0.0 729.0 "test.svg")(def header-xml "&lt;?xml version=\"1.0\"?&gt;")
+(def header-svg "&lt;svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"&gt;")
+(def footer "\"/&gt;\n&lt;/svg&gt;")
+
+(defn append-to-file
+  [file-name s]
+  (spit file-name s :append true))
+
+
+
+(defn print-line [x y len file]
+  (append-to-file file (str "M " x " " y))
+  (append-to-file file (str "h " len))
+  (append-to-file file (str "v " len))
+  (append-to-file file (str "h " (- 0 len)))
+  (append-to-file file (str "v -" len))  
+  )
+
+(defn fractal-cross [x y len file]
+  (if (&lt; len 3)
+    (print-line x y len file)
+    (let [l3 (/ len 3.0) l23 (* l3 2)]
+      (fractal-cross x y l3 file)
+      (fractal-cross (+ x l23) y l3 file)
+      (fractal-cross (+ x l3) (+ y l3) l3 file)
+      (fractal-cross x (+ y l23) l3 file)
+      (fractal-cross (+ x l23) (+ y l23) l3 file))))
+
+(defn run [x,y,len file]
+  (let [content "&lt;path d=\""]
+    (append-to-file file header-xml)
+    (append-to-file file header-svg)
+    (append-to-file file content)
+    (fractal-cross x y len file)
+    (append-to-file file footer)))
+
+
+(run 0.0 0.0 729.0 "test.svg")
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.3 (<a href="https://orgmode.org">Org</a> mode 9.6.15)</p>
+</div>
+</body>
+</html>

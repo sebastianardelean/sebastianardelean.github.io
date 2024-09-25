@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Decimal to binary in Clojure</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Decimal to binary in Clojure</h1>
+<div class="org-src-container">
+<pre class="src src-clojure">(defn convert-to-binary [value bits]
+  (letfn [(to-binary [value bits] 
+            (-&gt; value (Integer/toString 2)
+                (Integer/parseInt) (-&gt;&gt; (format (str "%0" bits "d")))))]
+    (let [binary-value (to-binary value bits) result-size (count binary-value)
+          default-value (apply str (repeat bits 1))]
+      (if (not= result-size bits) default-value  binary-value))))
+</pre>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.3 (<a href="https://orgmode.org">Org</a> mode 9.6.15)</p>
+</div>
+</body>
+</html>
