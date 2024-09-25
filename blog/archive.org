@@ -1,14 +1,14 @@
 #+TITLE: Archive
 
-- [[file:./][Blog]]
-- [[file:2024-08-21-simple-ga-in-clojure.html][Simple GA in Clojure]] (2024-09-25)
-- [[file:2024-08-21-polynomial-values-in-haskell.html][Polynomial values in Haskell]] (2024-09-25)
-- [[file:2024-08-21-monte-carlo-algorithms.html][Monte Carlo algorithms in OCaml]] (2024-09-25)
-- [[file:2024-08-21-flask-server-setup.html][Flask API served using Gunicorn and Nginx]] (2024-09-25)
 - [[file:2024-08-21-decorator-design-pattern-in-cpp.html][Decorator design pattern]] (2024-09-25)
-- [[file:2024-08-21-thread-safe-singleton-design-pattern-in-cpp.html][Thread-safe Singleton Design Pattern]] (2024-09-25)
-- [[file:2024-08-21-maps-of-member-functions-in-cpp.html][Create maps of member functions]] (2024-09-25)
-- [[file:2024-08-21-metaprogramming-in-cpp.html][Metaprogramming in Cpp]] (2024-09-25)
-- [[file:2024-08-21-decimal-to-binary-in-clojure.html][Decimal to binary in Clojure]] (2024-09-25)
+- [[file:2024-08-21-flask-server-setup.html][Flask API served using Gunicorn and Nginx]] (2024-09-25)
 - [[file:2024-08-21-fractals-implemented-in-clojure.html][Fractals implemented in Clojure]] (2024-09-25)
 - [[file:2024-08-21-latexdiff.html][Latex Diff]] (2024-09-25)
+- [[file:2024-08-21-maps-of-member-functions-in-cpp.html][Create maps of member functions]] (2024-09-25)
+- [[file:2024-08-21-metaprogramming-in-cpp.html][Metaprogramming in Cpp]] (2024-09-25)
+- [[file:2024-08-21-monte-carlo-algorithms.html][Monte Carlo algorithms in OCaml]] (2024-09-25)
+- [[file:2024-08-21-polynomial-values-in-haskell.html][Polynomial values in Haskell]] (2024-09-25)
+- [[file:2024-08-21-thread-safe-singleton-design-pattern-in-cpp.html][Thread-safe Singleton Design Pattern]] (2024-09-25)
+- [[file:2024-08-21-decimal-to-binary-in-clojure.html][Decimal to binary in Clojure]] (2024-09-25)
+- [[file:./][Blog]]
+- [[file:2024-08-21-simple-ga-in-clojure.html][Simple GA in Clojure]] (2024-09-25)

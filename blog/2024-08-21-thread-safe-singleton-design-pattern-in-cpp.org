@@ -1,4 +1,5 @@
 #+title: Thread-safe Singleton Design Pattern
+#+DATE: 2024-08-21
 
 #+begin_src cpp
 class Singleton {

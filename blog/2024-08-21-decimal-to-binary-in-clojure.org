@@ -1,5 +1,6 @@
 
 #+title: Decimal to binary in Clojure
+#+DATE: 2024-08-21
 
 #+begin_src clojure
 (defn convert-to-binary [value bits]

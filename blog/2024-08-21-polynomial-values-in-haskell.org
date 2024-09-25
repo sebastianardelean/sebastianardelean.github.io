@@ -1,5 +1,5 @@
 #+title: Polynomial values in Haskell
-
+#+DATE: 2024-08-21
 
 For a polynomial *p* of degree *N*, this function returns the value:
 

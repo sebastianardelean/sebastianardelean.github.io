@@ -1,4 +1,5 @@
 #+title: Fractals implemented in Clojure
+#+DATE: 2024-08-21
 
 ** Fractal canopy
 
