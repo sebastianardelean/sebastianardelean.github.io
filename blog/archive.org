@@ -1,6 +1,6 @@
 #+TITLE: Archive
 
-- [[file:./index.html][Blog]]
+- [[file:./][Blog]]
 - [[file:2024-08-21-simple-ga-in-clojure.html][Simple GA in Clojure]] (2024-09-25)
 - [[file:2024-08-21-polynomial-values-in-haskell.html][Polynomial values in Haskell]] (2024-09-25)
 - [[file:2024-08-21-monte-carlo-algorithms.html][Monte Carlo algorithms in OCaml]] (2024-09-25)

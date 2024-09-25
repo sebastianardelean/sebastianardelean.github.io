@@ -52,7 +52,7 @@
                    filename
                    (or title "No Title")
                    (format-time-string "%Y-%m-%d" (or date (current-time)))))
-          (t "[[./index.html][Blog]]"))))
+          (t "[[./][Blog]]"))))
 
 
 
