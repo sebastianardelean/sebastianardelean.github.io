@@ -162,7 +162,7 @@ Easy to integrate API for accessing true random numbers generated with IDQ’s Q
                                             (li (a (@ (href "https://hackage.haskell.org/package/qchas") (target "_blank")) "QCHas"))
                                             (li (a (@ (href "https://github.com/sebastianardelean/cell-automata") (target "_blank")) "Cellular automata"))
                                             (li (a (@ (href "https://github.com/sebastianardelean/libqrng") (target "_blank")) "LibQRNG"))
-                                            (li (a (@ (href "https://github.com/sebastianardelean/cl-quantum") (target "_blank")) "cl-quantum"))
+                                            (li (a (@ (href "https://github.com/sebastianardelean/clq") (target "_blank")) "clq"))
                                             (li (a (@ (href "https://github.com/sebastianardelean/hasher") (target "_blank")) "Hasher"))
                                             (li (a (@ (href "https://github.com/sebastianardelean/input_capture_driver") (target "_blank")) "Linux Input Capture Driver"))
                                             (li (a (@ (href "https://hackage.haskell.org/package/hqcsim") (target "_blank")) "hqcsim"))
