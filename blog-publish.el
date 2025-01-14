@@ -33,21 +33,23 @@
   (let ((filename (file-name-sans-extension entry))
         (title (org-publish-find-title entry project))
         (date (org-publish-find-date entry project)))
-   ; (message "Debug: filename=%s, title=%s, date=%s" filename title date)
-    (cond ((and (not (directory-name-p entry))
+;;    (message "Debug: filename=%s, title=%s, date=%s" filename title date)
+    (cond (
+           (and (not (directory-name-p entry))
                 (not (string= filename "index"))
-                (not (string= filename "sitemap"))
+                (not (string= filename "archive"))
                 )
            (format "[[file:%s.html][%s]] (%s)"
                    filename
                    (or title "No Title")
                    (format-time-string "%Y-%m-%d" (or date (current-time)))))
-          (t "[[./][Blog]]"))))
+          (t ""))))
+;;          (t "[[./][Blog]]"))))
 
 
 
 
-;; Define the publishing project
+;; Define the publishing projetc
 (setq org-publish-project-alist
       (list
        (list "org-site:main"
@@ -61,25 +63,17 @@
              :section-numbers t       ;; Don't include section numbers
              :time-stamp-file nil
              :html-head-extra "<header><a href=\"./\">Home</a>
-<a href=\"./archive.html\">Archive</a>
 </header>"
              :auto-sitemap t
-             :sitemap-filename "archive.org"
-             :sitemap-title "Archive"
+             :sitemap-filename "index.org"
+             :sitemap-title "Blog... or in fact, some short notes"
              :sitemap-style 'list
              :sitemap-sort-files 'anti-chronologically
              :sitemap-file-entry-format "%t (%d)" ;; Display title and date
              :sitemap-format-entry 'my-org-sitemap-format-entry
-
-         )
-       ))    ;; Don't include time stamp in file
-
-;(defun my-org-sitemap-finalize (title list)
-;  "Finalize the sitemap with TITLE and LIST."
-;  (concat "<h1>" title "</h1>\n<ul>\n" list "</ul>"))
-
-;(setq org-publish-sitemap-finalize-function 'my-org-sitemap-finalize)
-
+             )
+      
+       ))   
 ;; Generate the site output
 (org-publish-all t)
 

@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<!-- 2025-01-14 Tue 13:28 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Flask API served using Gunicorn and Nginx</title>
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
 <header><a href="./">Home</a>
-<a href="./archive.html">Archive</a>
 </header>
 </head>
 <body>
@@ -19,17 +19,17 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf1b86c7">1. Dependencies</a></li>
-<li><a href="#orgfd6b9fa">2. Python environment</a></li>
-<li><a href="#orgeca8f24">3. Python Application</a></li>
-<li><a href="#org4cf57b8">4. Systemd Service</a></li>
-<li><a href="#org3ca074c">5. Nginx as reverse proxy</a></li>
+<li><a href="#orgce2e5f9">1. Dependencies</a></li>
+<li><a href="#org75de796">2. Python environment</a></li>
+<li><a href="#org2446a78">3. Python Application</a></li>
+<li><a href="#org4af2fda">4. Systemd Service</a></li>
+<li><a href="#org84a4d54">5. Nginx as reverse proxy</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgf1b86c7" class="outline-2">
-<h2 id="orgf1b86c7"><span class="section-number-2">1.</span> Dependencies</h2>
+<div id="outline-container-orgce2e5f9" class="outline-2">
+<h2 id="orgce2e5f9"><span class="section-number-2">1.</span> Dependencies</h2>
 <div class="outline-text-2" id="text-1">
 <div class="org-src-container">
 <pre class="src src-bash">sudo apt install python3-pip python3-dev python3-venv nginx
@@ -38,8 +38,8 @@
 </div>
 </div>
 
-<div id="outline-container-orgfd6b9fa" class="outline-2">
-<h2 id="orgfd6b9fa"><span class="section-number-2">2.</span> Python environment</h2>
+<div id="outline-container-org75de796" class="outline-2">
+<h2 id="org75de796"><span class="section-number-2">2.</span> Python environment</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
 <pre class="src src-bash">python3 -m venv env
@@ -50,8 +50,8 @@ pip3 install flask gunicorn
 </div>
 </div>
 
-<div id="outline-container-orgeca8f24" class="outline-2">
-<h2 id="orgeca8f24"><span class="section-number-2">3.</span> Python Application</h2>
+<div id="outline-container-org2446a78" class="outline-2">
+<h2 id="org2446a78"><span class="section-number-2">3.</span> Python Application</h2>
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
 <pre class="src src-python"><span style="font-weight: bold; font-style: italic;">#</span><span style="font-weight: bold; font-style: italic;">~/project/app.py</span>
@@ -77,8 +77,8 @@ And deactivate the environment.
 </div>
 </div>
 
-<div id="outline-container-org4cf57b8" class="outline-2">
-<h2 id="org4cf57b8"><span class="section-number-2">4.</span> Systemd Service</h2>
+<div id="outline-container-org4af2fda" class="outline-2">
+<h2 id="org4af2fda"><span class="section-number-2">4.</span> Systemd Service</h2>
 <div class="outline-text-2" id="text-4">
 <div class="org-src-container">
 <pre class="src src-bash">  <span style="font-weight: bold; font-style: italic;">#</span><span style="font-weight: bold; font-style: italic;">vi /etc/systemd/system/flask.service</span>
@@ -108,8 +108,8 @@ systemctl status flask
 </div>
 </div>
 
-<div id="outline-container-org3ca074c" class="outline-2">
-<h2 id="org3ca074c"><span class="section-number-2">5.</span> Nginx as reverse proxy</h2>
+<div id="outline-container-org84a4d54" class="outline-2">
+<h2 id="org84a4d54"><span class="section-number-2">5.</span> Nginx as reverse proxy</h2>
 <div class="outline-text-2" id="text-5">
 <pre class="example">
 &gt; vim /etc/nginx/sites-available/flask.conf
@@ -167,6 +167,7 @@ systemctl restart nginx
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: 2024-08-21</p>
+<p class="date">Created: 2025-01-14 Tue 13:28</p>
 </div>
 </body>
 </html>
