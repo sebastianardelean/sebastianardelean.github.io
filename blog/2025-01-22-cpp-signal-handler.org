@@ -1,0 +1,102 @@
+#+title: C++ signal dispatcher
+#+DATE: 2025-01-22
+
+
+#+begin_src cpp
+  //main.cpp
+  #include <iostream>
+  #include <thread>
+  #include <csignal>
+  #include "sig.hpp"
+
+  auto handler(int signum) -> void {
+      std::cout<<"SIGALRM\n";
+  }
+
+  auto main(void) -> int {
+    bool stop = false;
+    sig_handler::setHandler(SIGINT, [&stop] (int) { stop = true; });
+    sig_handler::setHandler(SIGALRM, &handler);
+
+    while (!stop) {
+      std::this_thread::sleep_for(std::chrono::seconds(1));
+      raise(SIGALRM);
+    }
+    std::cout << "Bye" << std::endl;
+    return 0;
+  }
+
+#+end_src
+
+
+#+begin_src cpp
+  // sig.cpp
+  #include <cstring> // strsignal
+  #include <csignal>
+  #include <string>
+  #include <stdexcept>
+  #include <unordered_map>
+  #include <mutex>
+  #include "sig.hpp"
+
+  namespace sig_handler {
+
+    std::timed_mutex signalHandlersMutex;
+    std::unordered_map<int, std::function<void(int)>> signalHandlers;
+
+    auto dispatcher(int signal) -> void {
+      std::unique_lock<std::timed_mutex> lock(signalHandlersMutex, std::defer_lock);
+      if (!lock.try_lock_for(std::chrono::seconds(1))) {
+        // unable to get the lock. should be a strange case
+        return;
+      }
+      auto it = signalHandlers.find(signal);
+      if (it != signalHandlers.end()) {
+        it->second(signal);
+      }
+    }
+
+    auto registerHandler(int signal, const std::function<void(int)>& handler) -> void {
+      std::lock_guard<std::timed_mutex> lock(signalHandlersMutex);
+      signalHandlers.emplace(signal, handler);
+    }
+
+
+    auto setHandler(int signal, const std::function<void(int)>& handler, int flags) -> void {
+  
+      struct sigaction action;
+      if (sigfillset(&action.sa_mask) == -1) {
+        throw std::runtime_error("sigfillset failed");
+      }
+      action.sa_flags = flags;
+      action.sa_handler = dispatcher;
+
+      // set handler for the signal
+      if (sigaction(signal, &action, nullptr) == -1 && signal < __SIGRTMIN) {
+        throw std::runtime_error("Fail at configuring handler for signal: " + std::string(strsignal(signal)));
+      }
+      registerHandler(signal, handler);
+    }
+
+  }
+
+#+end_src
+
+
+#+begin_src cpp
+  //sig.hpp
+  #ifndef SIG_HPP
+  #define SIG_HPP
+
+  #include <functional>
+
+  namespace sig_handler {
+
+          auto setHandler(int signal, const std::function<void(int)>& handler, int flags=0) -> void;
+
+  }
+
+  #endif
+
+
+#+end_src

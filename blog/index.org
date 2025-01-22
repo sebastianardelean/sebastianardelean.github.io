@@ -1,5 +1,6 @@
 #+TITLE: Blog... or in fact, some short notes
 
+- [[file:2025-01-22-cpp-signal-handler.html][C++ signal dispatcher]] (2025-01-22)
 - [[file:2024-08-21-decorator-design-pattern-in-cpp.html][Decorator design pattern]] (2024-09-25)
 - [[file:2024-08-21-flask-server-setup.html][Flask API served using Gunicorn and Nginx]] (2024-09-25)
 - [[file:2024-08-21-fractals-implemented-in-clojure.html][Fractals implemented in Clojure]] (2024-09-25)
