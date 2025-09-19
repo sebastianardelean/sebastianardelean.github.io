@@ -131,6 +131,8 @@
                                             )
                                            (h4 "Journals")
                                            (ul
+                                            (li "Drăgoi, M.-M., Ardelean, S.-M., & Udrescu, L. (2025). Drug–Drug Interactions in COPD Therapy: A Community Pharmacy Study. Proceedings, 127(1), 7. https://doi.org/10.3390/proceedings2025127007")
+                                            (li "Colibășanu, D., Ardelean, S. M., Goldiș, F. D., Drăgoi, M. M., Vasii, S. O., Maksimović, T., ... & Udrescu, L. (2025). Unveiling Drug-Drug Interactions in Dental Patients: A Retrospective Real-World Study. Dentistry Journal, 13(6), 255.")
                                             (li "Sebastian Mihai Ardelean, Mihai Udrescu, Valentin Stangaciu,
 Easy to integrate API for accessing true random numbers generated with IDQ’s Quantis Appliance, SoftwareX, Volume 27, 2024, 101841, ISSN 2352-7110, https://doi.org/10.1016/j.softx.2024.101841. (https://www.sciencedirect.com/science/article/pii/S2352711024002127)")
                                             (li "Ardelean SM, Udrescu M. 2024. Hybrid quantum search with genetic algorithm optimization. PeerJ Computer Science 10:e2210 https://doi.org/10.7717/peerj-cs.2210")
