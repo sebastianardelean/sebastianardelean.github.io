@@ -1,4 +1,0 @@
-#+title: Latex Diff
-#+DATE: 2024-08-21
-
-Command to diff latex code when pictures/tables are inside a frame ~latexdiff --append-safecmd=subfile --config="PICTUREENV=(?:picture|DIFnomarkup|align|tabular)[\w\d*@]*" draft.tex revision.tex --flatten > diff_new.tex~

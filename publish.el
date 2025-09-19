@@ -70,7 +70,6 @@
                              (li (a (@ (class "page-scroll") (href "#publications")) "Publications"))
                              (li (a (@ (class "page-scroll") (href "#projects")) "Projects"))
                              (li (a (@ (class "page-scroll") (href "#contact")) "Contact"))
-                             (li (a (@ (class "page-scroll") (href "https://sebastianardelean.github.io/blog/") (target "_blank")) "Blog"))
                              ))))
           (section (@ (id "home"))
                    (div (@ (class "intro-header"))
@@ -226,9 +225,7 @@ Easy to integrate API for accessing true random numbers generated with IDQ’s Q
                              (li (@ (class "footer-menu-divider")) "&sdot;")
                              (li
                               (a (@ (href "#contact")) "Contact"))
-                             (li (@ (class "footer-menu-divider")) "&sdot;")
-                             (li
-                              (a (@ (href "https://sebastianardelean.github.io/blog/") (target "_blank")) "Blog")))
+                             (li (@ (class "footer-menu-divider")) "&sdot;"))
                          (p (@ (class "copyright text-muted small")) "© 2024 · Sebastian Mihai Ardelean"))
                     (div (@ (class "col-md-4")) ""))))))
 
