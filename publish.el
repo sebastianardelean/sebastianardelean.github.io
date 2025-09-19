@@ -123,13 +123,13 @@
                                       (h2 (@ (class "section-heading")) "Publications")
                                       (div (@ (class "lead"))
                                            (h4 "Conferences")
-                                           (ul
+                                           (ol
                                             (li "ARDELEAN, Sebastian Mihai; UDRESCU, Mihai. Circuit level implementation of the Reduced Quantum Genetic Algorithm using Qiskit. In: 2022 IEEE 16th International Symposium on Applied Computational Intelligence and Informatics (SACI). IEEE, 2022. p. 000155-000160.")
                                      
                                             (li "ARDELEAN, Sebastian Mihai; UDRESCU, Mihai. QC| pp>: A Behavioral Quantum Computing Simulation Library. In: 2018 IEEE 12th International Symposium on Applied Computational Intelligence and Informatics (SACI). IEEE, 2018. p. 000437-000442.")
                                             )
                                            (h4 "Journals")
-                                           (ul
+                                           (ol
                                             (li "Drăgoi, M.-M., Ardelean, S.-M., & Udrescu, L. (2025). Drug–Drug Interactions in COPD Therapy: A Community Pharmacy Study. Proceedings, 127(1), 7. https://doi.org/10.3390/proceedings2025127007")
                                             (li "Colibășanu, D., Ardelean, S. M., Goldiș, F. D., Drăgoi, M. M., Vasii, S. O., Maksimović, T., ... & Udrescu, L. (2025). Unveiling Drug-Drug Interactions in Dental Patients: A Retrospective Real-World Study. Dentistry Journal, 13(6), 255.")
                                             (li "Sebastian Mihai Ardelean, Mihai Udrescu, Valentin Stangaciu,
