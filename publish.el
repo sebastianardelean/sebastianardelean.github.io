@@ -272,20 +272,20 @@
                          (ul (@ (class "list-inline"))
                              (li
                               (a (@ (href "#home")) "Home"))
-                             (li (@ (class "footer-menu-divider")) "&sdot;")
+                             (li (@ (class "footer-menu-divider")) "·")
                              (li
                               (a (@ (href "#about")) "About"))
-                             (li (@ (class "footer-menu-divider")) "&sdot;")
+                             (li (@ (class "footer-menu-divider")) "·")
                              (li
                               (a (@ (href "#publications")) "Publications"))
-                             (li (@ (class "footer-menu-divider")) "&sdot;")
+                             (li (@ (class "footer-menu-divider")) "·")
                              (li
                               (a (@ (href "#projects")) "Projects"))
-                             (li (@ (class "footer-menu-divider")) "&sdot;")
+                             (li (@ (class "footer-menu-divider")) "·")
                              (li
                               (a (@ (href "#contact")) "Contact"))
-                             (li (@ (class "footer-menu-divider")) "&sdot;"))
-                         (p (@ (class "copyright text-muted small")) "© 2024 · Sebastian Mihai Ardelean"))
+                             (li (@ (class "footer-menu-divider")) "·"))
+                         (p (@ (class "copyright text-muted small")) "© 2026 · Sebastian Mihai Ardelean"))
                     (div (@ (class "col-md-4")) ""))))))
 
         
