@@ -29,6 +29,9 @@
 (require 'subr-x)
 (require 'cl-lib)
 
+;; Dependencies for ORCID parsers
+(require 'url)
+(require 'json)
 
 ;; Install dependencies
 (use-package esxml
@@ -48,7 +51,81 @@
 (setq user-mail-address "ardeleanasm@gmail.com")
 
 
+;; ORCID
 
+(defun orcid-fetch-works (orcid-id)
+  "Fetch ORCID works as JSON object"
+  (let ((url (format "https://pub.orcid.org/v3.0/%s/works" orcid-id))
+        (url-request-extra-headers
+         '(("Accept" . "application/json"))))
+    (with-current-buffer (url-retrieve-synchronously url t t 10)
+      (goto-char url-http-end-of-headers)
+;;      (let ((raw (buffer-substring-no-properties (point) (point-max))))
+;;        (princ raw))   ;; <-- this is what you want
+      
+      (json-parse-buffer :object-type 'alist :array-type 'list))))
+
+(defun orcid--safe (key alist)
+  (alist-get key alist))
+
+(defun orcid-extract-doi (summary)
+  (let* ((ext-ids (orcid--safe 'external-ids summary))
+         (ids     (orcid--safe 'external-id ext-ids)))
+    (when ids
+      (let ((doi-entry
+             (seq-find
+              (lambda (id)
+                (string= (orcid--safe 'external-id-type id) "doi"))
+              ids)))
+        (when doi-entry
+          (orcid--safe 'external-id-value doi-entry))))))
+
+
+(defun orcid-extract-work (group)
+  (let* ((summary (car (orcid--safe 'work-summary group)))
+         (title   (orcid--safe 'value
+                               (orcid--safe 'title
+                                            (orcid--safe 'title summary))))
+         (year    (let* ((date (orcid--safe 'publication-date summary))
+                         (year (and date (orcid--safe 'year date))))
+                    (and year (orcid--safe 'value year))))
+         (doi     (orcid-extract-doi summary)))
+    (list (cons 'title title)
+          (cons 'year year)
+          (cons 'doi doi))))
+
+
+(defun orcid-get-publications (orcid-id)
+  "Return list of publications from ORCID."
+  (let* ((json (orcid-fetch-works orcid-id))
+         (groups (alist-get 'group json)))
+    (mapcar #'orcid-extract-work groups)))
+
+
+
+(defun orcid-publications->html (orcid-id)
+  (let ((pubs (orcid-get-publications orcid-id)))
+    (concat
+     "<ol>\n"
+     (mapconcat
+      (lambda (p)
+        (format "<li>%s (%s)</li>"
+                (alist-get 'title p)
+                (alist-get 'year p)))
+      pubs
+      "\n")
+     "\n</ol>")))
+
+(defun orcid-publications->esxml (pubs)
+  `(ol
+    ,@(mapcar
+       (lambda (p)
+         `(li
+           ,(format "%s (%s) DOI:%s"
+                    (alist-get 'title p)
+                    (alist-get 'year p)
+                    (or (alist-get 'doi p) "N/A"))))
+       pubs)))
 ;; Site definitions
 
 (defun dw/site-header ()
@@ -112,6 +189,7 @@
                             (p "PhD. Eng. Sebastian Mihai Ardelean, is a Computer Engineer and software developer interested in Computer Architecture, Embedded Programming, Operating Systems and Functional Programming")
                             (br))))))
 
+
 (defun dw/site-publications ()
   (list `(section (@ (id "publications"))
                   (div (@ (class "content-section-a"))
@@ -122,27 +200,8 @@
                                       (div (@ (class "clearfix")) "")
                                       (h2 (@ (class "section-heading")) "Publications")
                                       (div (@ (class "lead"))
-                                           (h4 "Conferences")
-                                           (ol
-                                            (li "ARDELEAN, Sebastian Mihai; UDRESCU, Mihai. Circuit level implementation of the Reduced Quantum Genetic Algorithm using Qiskit. In: 2022 IEEE 16th International Symposium on Applied Computational Intelligence and Informatics (SACI). IEEE, 2022. p. 000155-000160.")
-                                     
-                                            (li "ARDELEAN, Sebastian Mihai; UDRESCU, Mihai. QC| pp>: A Behavioral Quantum Computing Simulation Library. In: 2018 IEEE 12th International Symposium on Applied Computational Intelligence and Informatics (SACI). IEEE, 2018. p. 000437-000442.")
-                                            )
-                                           (h4 "Journals")
-                                           (ol
-                                            (li "Drăgoi, M.-M., Ardelean, S.-M., & Udrescu, L. (2025). Drug–Drug Interactions in COPD Therapy: A Community Pharmacy Study. Proceedings, 127(1), 7. https://doi.org/10.3390/proceedings2025127007")
-                                            (li "Colibășanu, D., Ardelean, S. M., Goldiș, F. D., Drăgoi, M. M., Vasii, S. O., Maksimović, T., ... & Udrescu, L. (2025). Unveiling Drug-Drug Interactions in Dental Patients: A Retrospective Real-World Study. Dentistry Journal, 13(6), 255.")
-                                            (li "Sebastian Mihai Ardelean, Mihai Udrescu, Valentin Stangaciu,
-Easy to integrate API for accessing true random numbers generated with IDQ’s Quantis Appliance, SoftwareX, Volume 27, 2024, 101841, ISSN 2352-7110, https://doi.org/10.1016/j.softx.2024.101841. (https://www.sciencedirect.com/science/article/pii/S2352711024002127)")
-                                            (li "Ardelean SM, Udrescu M. 2024. Hybrid quantum search with genetic algorithm optimization. PeerJ Computer Science 10:e2210 https://doi.org/10.7717/peerj-cs.2210")
-                                            (li "SUCIU, Liana, et al. Categorical Analysis of Database Consistency in Reporting Drug–Drug Interactions for Cardiovascular Diseases. Pharmaceutics, 2024, 16.3: 339.")
-                                            (li "UDRESCU, Mihai; ARDELEAN, Sebastian Mihai; UDRESCU, Lucreţia. The curse and blessing of abundance—the evolution of drug interaction databases and their impact on drug network analysis. GigaScience, 2023, 12: giad011.")
-                                            (li "ARDELEAN, Sebastian Mihai; UDRESCU, Mihai. Graph coloring using the reduced quantum genetic algorithm. PeerJ Computer Science, 2022, 7: e836.")
-
-                                            )
-
-
-                                           ))
+                                           ,(orcid-publications->esxml
+                                             (orcid-get-publications "0000-0003-0968-1191"))))
                                  (div (@ (class "col-lg-5 col-lg-offset-2 col-sm-6"))
                                       (img (@ (class "img-responsive") (src "img/blog.png") (alt "")))))))
                   )))
