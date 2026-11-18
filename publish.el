@@ -54,16 +54,24 @@
 ;; ORCID
 
 (defun orcid-fetch-works (orcid-id)
-  "Fetch ORCID works as JSON object"
-  (let ((url (format "https://pub.orcid.org/v3.0/%s/works" orcid-id))
-        (url-request-extra-headers
-         '(("Accept" . "application/json"))))
-    (with-current-buffer (url-retrieve-synchronously url t t 10)
-      (goto-char url-http-end-of-headers)
-;;      (let ((raw (buffer-substring-no-properties (point) (point-max))))
-;;        (princ raw))   ;; <-- this is what you want
-      
-      (json-parse-buffer :object-type 'alist :array-type 'list))))
+  "Fetch ORCID works as a JSON alist."
+  (let* ((url (format "https://pub.orcid.org/v3.0/%s/works"
+                      orcid-id))
+         (url-mime-accept-string "application/vnd.orcid+json")
+         (buffer (url-retrieve-synchronously url t t 15)))
+    (unless buffer
+      (error "ORCID request failed: no response received"))
+    (unwind-protect
+        (with-current-buffer buffer
+          (unless (= url-http-response-status 200)
+            (error "ORCID HTTP error: %s"
+                   url-http-response-status))
+          (goto-char url-http-end-of-headers)
+          (json-parse-buffer
+           :object-type 'alist
+           :array-type 'list))
+      (kill-buffer buffer))))
+
 
 (defun orcid--safe (key alist)
   (alist-get key alist))
@@ -439,3 +447,6 @@
 ;;(org-publish-all t)
 
 (provide 'publish)
+
+
+
